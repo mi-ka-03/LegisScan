@@ -3,7 +3,8 @@ import torch
 import torch.nn as nn
 import numpy as np
 from tqdm import tqdm
-from transformers import AdamW, get_linear_schedule_with_warmup
+import torch.optim as optim
+from transformers import get_linear_schedule_with_warmup
 
 
 class Trainer:
@@ -21,7 +22,7 @@ class Trainer:
         os.makedirs(save_dir, exist_ok=True)
 
         # 初始化优化器和学习率调度器
-        self.optimizer = AdamW(model.parameters(), lr=5e-5, eps=1e-8)
+        self.optimizer = optim.AdamW(model.parameters(), lr=5e-5, eps=1e-8)
         total_steps = len(train_loader) * epochs
         self.scheduler = get_linear_schedule_with_warmup(
             self.optimizer,
@@ -123,3 +124,4 @@ class Trainer:
             self.tokenizer.save_pretrained(f"{self.save_dir}/last_model")
 
         print(f"\n训练完成! 最佳验证损失: {self.best_val_loss:.4f}")
+
