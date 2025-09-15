@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>典勘 - 法律文书智能纠错系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ 典勘</h1>
+            <p>法律文书智能纠错系统</p>
+        </header>
+
+        <main>
+            <!-- 文件上传区域 -->
+            <div class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzMgMjRIMjRWMTVIMjRWMjRIMTVWMjRIMjRWMzNIMjRWMjRIMzNWMjRaIiBmaWxsPSIjMTk3NkYyIi8+PHBhdGggZD0iTTI0IDRDMzMuOTQxMSA0NDIgMzkuMDI4OSA0NCA0OCA0NEM0My45NzExIDQ0IDM5LjAyODkgNCAyOSA0QzI5IDQgMjQuOTg1NyA0IDI0IDRaIiBmaWxsPSIjMTk3NkYyIi8+PC9zdmc+" alt="上传" class="upload-icon">
+                    <p>点击或拖拽文件到此处上传</p>
+                    <p class="support-text">支持 .txt, .pdf, .docx 格式</p>
+                    <input type="file" id="fileInput" accept=".txt,.pdf,.docx" hidden>
+                </div>
+                <button id="analyzeBtn" class="analyze-btn" disabled>开始分析</button>
+            </div>
+
+            <!-- 状态显示 -->
+            <div id="status" class="status" hidden>
+                <div class="loading-spinner"></div>
+                <p>正在分析中，请稍候...</p>
+            </div>
+
+            <!-- 错误显示 -->
+            <div id="error" class="error" hidden></div>
+
+            <!-- 结果展示 -->
+            <div id="results" class="results" hidden>
+                <h2>📋 分析结果</h2>
+                <div class="results-content">
+                    <div class="summary">
+                        共发现 <span id="errorCount">0</span> 个问题
+                    </div>
+                    <div id="errorList" class="error-list">
+                        <!-- 错误列表将由JavaScript动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
